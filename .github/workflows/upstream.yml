@@ -80,8 +80,6 @@ jobs:
         }
         (
         git_clone https://github.com/xiaorouji/openwrt-passwall && mvdir openwrt-passwall
-        ) &
-        (
         git_clone https://github.com/jerrykuku/luci-theme-argon
         git_clone https://github.com/jerrykuku/luci-app-argon-config
         git_clone https://github.com/jerrykuku/luci-app-vssr
@@ -149,10 +147,10 @@ jobs:
         #git_clone https://github.com/htynkn/openwrt-switch-lan-play && mv -n openwrt-switch-lan-play/package/* ./ && rm -rf openwrt-switch-lan-play
         ) &
         #git_clone https://github.com/linkease/openwrt-app-actions &
-        (
+        #(
         #git_clone https://github.com/honwen/luci-app-shadowsocks-rust
         #git_clone https://github.com/Hyy2001X/AutoBuild-Packages && rm -rf AutoBuild-Packages/luci-app-adguardhome && mvdir AutoBuild-Packages
-        ) &
+        #) &
         (
         svn export https://github.com/Ysurac/openmptcprouter-feeds/trunk/luci-app-iperf
         #svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-irqbalance
