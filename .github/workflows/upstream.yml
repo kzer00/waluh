@@ -223,8 +223,7 @@ jobs:
         #mv -n openwrt-app-actions/applications/* ./;rm -rf openwrt-app-actions
         rm -Rf */.git
        
-        done
-
+ 
 
     - name: SSH connection to Actions
       uses: kiddin9/debugger-action@master
