@@ -82,8 +82,8 @@ jobs:
         git_clone https://github.com/xiaorouji/openwrt-passwall && mvdir openwrt-passwall
         git_clone https://github.com/jerrykuku/luci-theme-argon
         git_clone https://github.com/jerrykuku/luci-app-argon-config
-        git_clone https://github.com/jerrykuku/luci-app-vssr
-        git_clone https://github.com/sirpdboy/netspeedtest && mv -n netspeedtest/luci-app-netspeedtest ./ ; rm -rf netspeedtest
+        #git_clone https://github.com/jerrykuku/luci-app-vssr
+        #git_clone https://github.com/sirpdboy/netspeedtest && mv -n netspeedtest/luci-app-netspeedtest ./ ; rm -rf netspeedtest
         ) &
         (
         git_clone https://github.com/esirplayground/luci-app-poweroff
@@ -118,8 +118,8 @@ jobs:
         #git_clone https://github.com/tty228/luci-app-serverchan
         git_clone https://github.com/4IceG/luci-app-sms-tool smstool && mvdir smstool
         git_clone https://github.com/4IceG/luci-app-modemband modemb  && mv -n modemb/* ./;rm -rf modemb
-        git_clone https://github.com/ZeaKyX/speedtest-web
-        git_clone https://github.com/ZeaKyX/luci-app-speedtest-web
+        #git_clone https://github.com/ZeaKyX/speedtest-web
+        #git_clone https://github.com/ZeaKyX/luci-app-speedtest-web
         #git_clone https://github.com/Zxilly/UA2F
         #git_clone https://github.com/jhonathanc/ps3netsrv-openwrt && mv -n ps3netsrv-openwrt/* ./;rm -rf ps3netsrv-openwrt
         ) &
