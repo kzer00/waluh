@@ -79,6 +79,7 @@ jobs:
         rm -rf $1
         }
         (
+     
         svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall
         svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall2
         svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-ssr-plus
