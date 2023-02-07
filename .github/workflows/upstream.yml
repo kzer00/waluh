@@ -222,12 +222,7 @@ jobs:
         #mv -n liep/* ./ ; rm -Rf liep
         #mv -n openwrt-app-actions/applications/* ./;rm -rf openwrt-app-actions
         rm -Rf */.git
-        for pkg in $(ls -d .github/diy/packages/*); do
-          mv -f $pkg/Makefile.k $pkg/Makefile >/dev/null 2>&1 || true
-        done
-        cp -rf .github/diy/packages/* ./ || true
-        for pkg in $(ls -d .github/diy/packages/*); do
-          mv -f $pkg/Makefile $pkg/Makefile.k >/dev/null 2>&1 || true
+       
         done
 
 
@@ -299,9 +294,7 @@ jobs:
 
         (
         rm -rf luci-app-partexp/po/zh_Hans
-        bash .github/diy/create_acl_for_luci.sh -a >/dev/null 2>&1 || true
-        bash .github/diy/convert_translation.sh -a >/dev/null 2>&1 || true
-        
+     
         #sed -i 's?"http://" + window.location.hostname?window.location.protocol + "//" + window.location.hostname?g' `find luci-app*/luasrc/view/ -maxdepth 2 -name "*.htm"`
         rm -f miniupnpd-iptables/patches/106-spam-syslog*
         sed -i "/minisign:minisign/d" luci-app-dnscrypt-proxy2/Makefile
