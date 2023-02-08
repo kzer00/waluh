@@ -84,8 +84,8 @@ jobs:
         svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall2
         svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-ssr-plus
         git_clone https://github.com/xiaorouji/openwrt-passwall && mvdir openwrt-passwall
-        git_clone https://github.com/jerrykuku/luci-theme-argon
-        git_clone https://github.com/jerrykuku/luci-app-argon-config
+        git_clone https://github.com/jerrykuku/luci-theme-argon && mvdir luci-theme-argon
+        git_clone https://github.com/jerrykuku/luci-app-argon-config && mvdir luci-app-argon-config
         #git_clone https://github.com/jerrykuku/luci-app-vssr
         #git_clone https://github.com/sirpdboy/netspeedtest && mv -n netspeedtest/luci-app-netspeedtest ./ ; rm -rf netspeedtest
         ) &
