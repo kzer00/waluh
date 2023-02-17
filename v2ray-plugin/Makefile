@@ -7,11 +7,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=v2ray-plugin
 PKG_VERSION:=5.3.0
-PKG_RELEASE:=15
+PKG_RELEASE:=16
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/teddysun/v2ray-plugin/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=d8394ee4e01c8ad73f13b4cd769e02d3a5ac6a737be9bcc7587332ce92db619a
+PKG_HASH:=skip
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
