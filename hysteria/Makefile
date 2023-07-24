@@ -6,7 +6,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=hysteria
 PKG_VERSION:=1.3.5
-PKG_RELEASE:=121
+PKG_RELEASE:=122
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/apernet/hysteria/tar.gz/v$(PKG_VERSION)?
