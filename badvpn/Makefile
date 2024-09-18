@@ -8,12 +8,12 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=badvpn
 PKG_VERSION:=1.999.130
-PKG_RELEASE:=11
+PKG_RELEASE:=12
 PKG_MAINTAINER:=helmiau
 
 PKG_SOURCE:=$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/ambrop72/badvpn/archive/
-PKG_MD5SUM:=skip
+PKG_MD5SUM:=e65d8d298fc82eb9a6c12a9425a97e6d
 
 include $(INCLUDE_DIR)/package.mk
 
