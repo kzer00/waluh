@@ -16,6 +16,8 @@ LUCI_DEPENDS:=+coreutils +coreutils-stdbuf +jq +ip-full +kmod-tun +openssh-clien
 	+bash +curl +librt +libpthread +screen +shadowsocks-libev-ss-local +openvpn-openssl
 
 PKG_NAME:=luci-app-libernet-plus
+PKG_VERSION:=2.0
+PKG_RELEASE:=10
 
 define Package/$(PKG_NAME)
 	$(call Package/luci/webtemplate)
