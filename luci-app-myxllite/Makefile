@@ -13,6 +13,8 @@ LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+curl +php8
 
 PKG_NAME:=luci-app-myxllite
+PKG_VERSION:=1.1
+PKG_RELEASE:=10
 
 define Package/$(PKG_NAME)
 	$(call Package/luci/webtemplate)
