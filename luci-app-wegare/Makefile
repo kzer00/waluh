@@ -14,6 +14,8 @@ LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+php8 +php8-cgi +php8-mod-session +zoneinfo-core +zoneinfo-asia +sshpass +openvpn-openssl +ip-full +openssh-client +httping +screen +python3 +coreutils-nohup +libevent2 +redsocks
 
 PKG_NAME:=luci-app-wegare
+PKG_VERSION:=1.5
+PKG_RELEASE:=12
 
 define Package/$(PKG_NAME)
 	$(call Package/luci/webtemplate)
