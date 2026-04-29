@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=teleproxy
-PKG_VERSION:=4.11.0
-PKG_RELEASE:=4
+PKG_VERSION:=4.12.2
+PKG_RELEASE:=5
 
 PKG_MAINTAINER:=Kosntantine Shevlakov <shevlakov@132lan.ru>
 PKG_LICENSE:=GPLv2
@@ -26,6 +26,10 @@ define Package/$(PKG_NAME)
   CATEGORY:=Network
   TITLE:=MTProxy OpenWRT package
   DEPENDS:=+libopenssl +zlib
+endef
+
+define Package/$(PKG_NAME)/conffiles
+/etc/config/$(PKG_NAME)
 endef
 
 define Package/$(PKG_NAME)/install
