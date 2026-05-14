@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=badvpn
 PKG_VERSION:=1.999.130
-PKG_RELEASE:=15
+PKG_RELEASE:=16
 PKG_MAINTAINER:=helmiau
 
 PKG_SOURCE:=$(PKG_VERSION).tar.gz
