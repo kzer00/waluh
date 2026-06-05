@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=accel-ppp
-PKG_RELEASE:=20
+PKG_RELEASE:=21
 PKG_VERSION:=1.14.0
 
 PKG_SOURCE_PROTO:=git
@@ -24,10 +24,13 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 include $(INCLUDE_DIR)/kernel.mk
 
-# Базовые зависимости
+# Strip -mips16 flags: libatomic does not provide __sync_*_8 in MIPS16 mode
+TARGET_CFLAGS:=$(filter-out -mips16 -minterlink-mips16,$(TARGET_CFLAGS))
+TARGET_LDFLAGS:=$(filter-out -mips16 -minterlink-mips16,$(TARGET_LDFLAGS))
+
+# Base depends
 DEPENDS_COMMON:=+libpcre2 +libopenssl +libpthread +librt +libatomic +libucontext
 
-# Добавляем зависимости в зависимости от выбранных опций
 ifeq ($(CONFIG_ACCEL_PPP_PGSQL_LOG),y)
   DEPENDS_COMMON+= +libpq
 endif
@@ -49,7 +52,7 @@ define Package/$(PKG_NAME)/config
   source "$(SOURCE)/Config.in"
 endef
 
-# Настройки CMake на основе конфигурации
+# CMake Config flags
 CMAKE_OPTIONS += \
 	-DKDIR=$(LINUX_DIR) \
 	-DKARCH=$(LINUX_KARCH) \
@@ -66,7 +69,7 @@ CMAKE_OPTIONS += \
 	-DBUILD_VLAN_MON_DRIVER=$(if $(CONFIG_PACKAGE_kmod-$(PKG_NAME)-vlan-mon),TRUE,FALSE)
 
 CMAKE_BINARY_DIR := $(PKG_BUILD_DIR)/build
-TARGET_CFLAGS += -I$(STAGING_DIR)/opt/include -D_GNU_SOURCE -g -O2 -Wno-incompatible-pointer-types
+TARGET_CFLAGS += -I$(STAGING_DIR)/opt/include -D_GNU_SOURCE -g -O2 -Wno-incompatible-pointer-types -Wno-deprecated-declarations
 TARGET_LDFLAGS += -lpthread -latomic -lucontext -Wl,-rpath,/usr/lib/accel-ppp
 
 define KernelPackage/$(PKG_NAME)-ipoe
@@ -94,6 +97,7 @@ define Package/$(PKG_NAME)/install
 		$(1)/usr/share/accel-ppp \
 		$(1)/usr/share/accel-ppp/radius \
 		$(1)/usr/share/accel-ppp/l2tp \
+		$(1)/usr/share/accel-ppp/l2tp/dictionary \
 		$(1)/etc/init.d \
 		$(1)/etc/accel-ppp
 
@@ -105,13 +109,13 @@ define Package/$(PKG_NAME)/install
 		$(PKG_INSTALL_DIR)/usr/bin/accel-cmd \
 		$(1)/usr/bin/
 
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/accel-ppp/*.so $(1)/usr/lib/accel-ppp/
-
-	cd $(1)/usr/lib && for so in ../usr/lib/accel-ppp/*.so; do $(LN) -sf $$so .; done
+	$(INSTALL_BIN) \
+		$(PKG_INSTALL_DIR)/usr/lib/accel-ppp/*.so \
+		$(1)/usr/lib/accel-ppp/
 
 	$(INSTALL_DATA) \
 		$(PKG_INSTALL_DIR)/usr/share/accel-ppp/l2tp/dictionary.* \
-		$(1)/usr/share/accel-ppp/l2tp/ || true
+		$(1)/usr/share/accel-ppp/l2tp/dictionary/ || true
 
 	$(INSTALL_BIN) \
 		files/accel-ppp.init \
@@ -120,14 +124,6 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_DATA) \
 		files/accel-ppp.conf \
 		$(1)/etc/accel-ppp/
-endef
-
-define Package/$(PKG_NAME)/prerm
-#!/bin/sh
-for so in /usr/lib/accel-ppp/*.so; do
-	[ -f "$$so" ] && rm -f "/usr/lib/$$(basename $$so)"
-done
-exit 0
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
