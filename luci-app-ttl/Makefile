@@ -10,8 +10,6 @@ LUCI_TITLE:=Antitethering module for luci-app-firewall
 #LUCI_DEPENDS:= +luci-app-firewall
 
 PKG_LICENSE:=Apache-2.0
-PKG_VERSION:=0.0.6
-PKG_RELEASE:=17
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
