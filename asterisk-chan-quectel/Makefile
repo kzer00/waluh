@@ -9,12 +9,12 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=asterisk-chan-quectel
 PKG_VERSION:=2.1-20220526
-PKG_RELEASE:=13
+PKG_RELEASE:=14
 
 #PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://github.com/IchthysMaranatha/asterisk-chan-quectel.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=f9828978a608be6c32282f2637863a45f00c3d25
+PKG_SOURCE_VERSION:=null
 PKG_SOURCE_PROTO:=git
 
 PKG_FIXUP:=autoreconf
