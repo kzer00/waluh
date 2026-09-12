@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=3proxy
 PKG_VERSION:=0.9.8
-PKG_RELEASE:=28
+PKG_RELEASE:=29
 
 PKG_MAINTAINER:=muziling <lls924@gmail.com>
 PKG_LICENSE:=GPLv2
