@@ -10,6 +10,9 @@ LUCI_TITLE:=Argon Theme
 LUCI_DEPENDS:=+USE_APK:wget-any +!USE_APK:wget +jsonfilter
 
 CONFIG_LUCI_CSSTIDY:=
+# Ship template source across stable and snapshot runtimes. Precompiled
+# bytecode would require the SDK's ucode format (see issue #715).
+LUCI_MINIFY_UT:=0
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
